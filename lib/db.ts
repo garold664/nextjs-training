@@ -2,6 +2,13 @@ import sql from 'better-sqlite3';
 
 const db = sql('training.db');
 
+export type Training = {
+  id: number;
+  title: string;
+  image: string;
+  description: string;
+};
+
 db.exec(`
   CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY,
