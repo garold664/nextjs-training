@@ -1,5 +1,6 @@
 'use server';
 
+import { createUser } from '@/lib/users';
 import { error } from 'console';
 
 type Errors = {
@@ -26,5 +27,9 @@ export async function signup(
 
   if (Object.keys(errors).length > 0) {
     return { errors };
+  }
+
+  if (email && password) {
+    createUser(email, password);
   }
 }
