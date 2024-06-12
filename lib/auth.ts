@@ -16,8 +16,8 @@ const lucia = new Lucia(adapter, {
   },
 });
 
-export async function createAuthSession(userId: string) {
-  const session = await lucia.createSession(userId, {});
+export async function createAuthSession(userId: number | bigint) {
+  const session = await lucia.createSession(userId.toString(), {});
   const sessionCookie = lucia.createSessionCookie(session.id);
   cookies().set(
     sessionCookie.name,
