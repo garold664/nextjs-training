@@ -6,7 +6,7 @@ import { useFormState } from 'react-dom';
 
 import { signup } from '@/actions/auth-actions';
 
-export default function AuthForm() {
+export default function AuthForm({ mode }: { mode: string }) {
   const [formState, formAction] = useFormState(signup, { errors: {} });
   return (
     <form id="auth-form" action={formAction}>
@@ -31,10 +31,14 @@ export default function AuthForm() {
         </ul>
       )}
       <p>
-        <button type="submit">Create Account</button>
+        {mode === 'signup' && <button type="submit">Create Account</button>}
+        {mode === 'login' && <button type="submit">Login</button>}
       </p>
       <p>
-        <Link href="/">Login with existing account.</Link>
+        {mode === 'signup' && (
+          <Link href="/?mode=login">Login with existing account.</Link>
+        )}
+        {mode === 'login' && <Link href="/?mode=signup">Signup.</Link>}
       </p>
     </form>
   );
