@@ -1,4 +1,5 @@
 import { verifyAuth } from '@/lib/auth';
+import { Training } from '@/lib/db';
 import { getTrainings } from '@/lib/training';
 import { redirect } from 'next/navigation';
 
@@ -9,13 +10,13 @@ export default async function TrainingPage() {
     redirect('/');
   }
 
-  const trainingSessions = getTrainings();
+  const trainingSessions = getTrainings() as Training[];
 
   return (
     <main>
       <h1>Find your favorite activity</h1>
       <ul id="training-sessions">
-        {trainingSessions.map((training: Training) => (
+        {trainingSessions.map((training) => (
           <li key={training.id}>
             <img src={`/trainings/${training.image}`} alt={training.title} />
             <div>
