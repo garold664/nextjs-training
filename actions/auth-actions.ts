@@ -97,3 +97,14 @@ export async function login(
   createAuthSession(existingUser.id);
   redirect('/training');
 }
+
+export async function auth(
+  mode: 'login' | 'signup',
+  prevState: { errors: Errors } | undefined,
+  formData: FormData
+) {
+  if (mode === 'login') {
+    return login(prevState, formData);
+  }
+  return signup(prevState, formData);
+}
