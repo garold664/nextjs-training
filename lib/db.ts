@@ -9,6 +9,12 @@ export type Training = {
   description: string;
 };
 
+export type User = {
+  email: string;
+  password: string;
+  id: number;
+};
+
 db.exec(`
   CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY,
