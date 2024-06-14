@@ -59,4 +59,5 @@ export async function verifyAuth() {
       );
     }
   } catch {}
+  return result;
 }
