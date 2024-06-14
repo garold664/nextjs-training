@@ -1,3 +1,4 @@
+import { LayoutProps } from '@/lib/types';
 import './globals.css';
 
 export const metadata = {
@@ -5,11 +6,7 @@ export const metadata = {
   description: 'Next.js Authentication',
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: LayoutProps) {
   return (
     <html lang="en">
       <body>{children}</body>
